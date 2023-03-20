@@ -1,8 +1,9 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
 
 const connect = async () => {
     try{
-        const connection = await mongoose.connect("mongodb+srv://aayushsingh504:poiuytrewq@test.nbl4l2n.mongodb.net/testingDB", {useNewUrlParser: true});
+        const connection = await mongoose.connect(process.env.DB_URI, {useNewUrlParser: true});
         console.log("Successfully connected to the database.");
     } catch (err){
         console.log(err);
