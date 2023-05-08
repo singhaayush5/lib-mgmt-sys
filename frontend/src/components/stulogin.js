@@ -9,8 +9,16 @@ import {
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../state";
+
+// import Cookies from "universal-cookie";
+// import jwt from "jwt-decode";
 
 function StuLogin() {
+  // const cookies = new Cookies();
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -47,6 +55,18 @@ function StuLogin() {
       navigator("/student/login");
     } else {
       console.log(resData);
+      dispatch(
+        setLogin({
+          user: resData.user,
+          token: resData.token,
+        })
+      );
+      // const { token } = resData;
+      // const decoded = jwt(token);
+      // cookies.set("token", token, {
+      //   expires: new Date(decoded.exp * 1000),
+      // });
+
       console.log("Success!");
       navigator("/student");
     }

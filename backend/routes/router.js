@@ -3,6 +3,7 @@ const router = express.Router();
 const usercontroller = require("../controllers/usercontroller");
 const bookcontroller = require("../controllers/bookcontroller");
 const authcontroller = require("../controllers/auth");
+const { verifyToken } = require("../middleware/index.js");
 
 //GET the data of a particular user.
 router.get("/api/user/:id", usercontroller.userData);
