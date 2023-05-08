@@ -69,15 +69,16 @@ function Signup(props) {
 
   return (
     <div>
-      <Typography variant="h3" align="Center">
-        Signup
+      <Typography style={{ margin: "5% auto" }} variant="h3" align="Center">
+        Register
       </Typography>
-      <Card style={{ maxWidth: 500, margin: "0 auto", padding: "25px 6px" }}>
+      <Card style={{ maxWidth: 400, margin: "5% auto", padding: "25px 6px" }}>
         <CardContent>
           <form>
             <Grid container spacing={2}>
               <Grid xs={12} item>
                 <TextField
+                  size="small"
                   name="name"
                   value={user.name}
                   onChange={handleChange}
@@ -126,11 +127,11 @@ function Signup(props) {
               </Grid>
               <Grid xs={12} item>
                 <TextField
-                  name="email"
-                  value={user.email}
+                  size="small"
+                  name="phno"
+                  value={user.phno}
                   onChange={handleChange}
-                  type="email"
-                  label="Email"
+                  label="Phone No."
                   variant="outlined"
                   fullWidth
                   required
@@ -142,6 +143,18 @@ function Signup(props) {
                   value={user.rollno}
                   onChange={handleChange}
                   label="Roll number"
+                  variant="outlined"
+                  fullWidth
+                  required
+                />
+              </Grid>
+              <Grid xs={12} item>
+                <TextField
+                  name="email"
+                  value={user.email}
+                  type="email"
+                  onChange={handleChange}
+                  label="Email"
                   variant="outlined"
                   fullWidth
                   required

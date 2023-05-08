@@ -54,15 +54,16 @@ function StuLogin() {
 
   return (
     <div>
-      <Typography variant="h3" align="Center">
+      <Typography style={{ margin: "6% auto" }} variant="h3" align="Center">
         Login
       </Typography>
-      <Card style={{ maxWidth: 500, margin: "0 auto", padding: "25px 6px" }}>
+      <Card style={{ maxWidth: 400, margin: "3% auto", padding: "20px 6px" }}>
         <CardContent>
           <form>
             <Grid container spacing={2}>
               <Grid xs={12} item>
                 <TextField
+                  size="small"
                   name="email"
                   value={user.email}
                   onChange={handleChange}
@@ -75,6 +76,7 @@ function StuLogin() {
               </Grid>
               <Grid xs={12} item>
                 <TextField
+                  size="small"
                   name="password"
                   value={user.password}
                   onChange={handleChange}
@@ -87,6 +89,7 @@ function StuLogin() {
               </Grid>
               <Grid xs={12} item>
                 <Button
+                  sx={{ borderRadius: 6 }}
                   type="submit"
                   variant="contained"
                   color="primary"
