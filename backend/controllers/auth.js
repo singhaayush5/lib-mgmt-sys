@@ -49,11 +49,11 @@ exports.login = async (req, res) => {
     //   expires: new Date(Date.now() + 25892000000),
     //   httpOnly: true,
     // });
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-      signed: true,
-    });
+    // res.cookie("token", token, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   signed: true,
+    // });
     console.log(token);
     delete user.password;
     res.status(200).json({ user, token });
