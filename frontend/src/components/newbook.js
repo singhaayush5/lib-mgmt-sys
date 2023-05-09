@@ -31,7 +31,9 @@ import {
     };
   
     const postBookData = async (eve) => {
-      eve.preventDefault();
+        document.getElementById("create-course-form").addEventListener("click", function(event){
+            event.preventDefault()
+        });
       const { title, author, publisher, category, quantity } = book;
       console.log(book);
   
@@ -62,12 +64,12 @@ import {
   
     return (
       <div>
-        <Typography style={{ margin: "5% auto" }} variant="h3" align="Center">
+        <Typography style={{ margin: "5% auto" }} variant="h3" align="center">
           New Book
         </Typography>
         <Card style={{ maxWidth: 400, margin: "7% auto", padding: "20px 6px" }}>
           <CardContent>
-            <form>
+            <form id="create-course-form">
               <Grid container spacing={2}>
                 <Grid xs={12} item>
                   <TextField

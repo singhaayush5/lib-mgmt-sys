@@ -1,4 +1,4 @@
-export default verifyToken = async (req, res, next) => {
+verifyToken = async (req, res, next) => {
   try {
     let token = req.header("Authorization"); //frontend se layenge
     if (!token) {
@@ -16,3 +16,5 @@ export default verifyToken = async (req, res, next) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+module.exports = verifyToken;
