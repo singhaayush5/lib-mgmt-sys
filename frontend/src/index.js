@@ -1,40 +1,77 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
-import './index.css'
-import { createTheme, ThemeProvider } from '@mui/material'
+import authReducer from "./state";
+import { configureStore } from "@reduxjs/toolkit";
+import { Provider } from "react-redux";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
+import storage from "redux-persist/lib/storage";
+import { PersistGate } from "redux-persist/integration/react";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#000000'
-    },
-    secondary: {
-      main: '#ffffff'
+  components: {
+    MuiButton: { 
+      styleOverrides: { 
+        root: { minWidth: 0 } 
+      } 
     }
   },
-  typography:{
-    fontFamily:[
-      'Syne',
-      'sans-serif'
-    ].join(','),
+  palette: {
+    primary: {
+      main: "#a2d2ff",
+    },
+    secondary: {
+      main: "#FFA0B0",
+    },
+    tertiary:{
+      main: "#dadada"
+    }
   },
-  button:{
-    fontFamily:[
-      'Syne',
-      'sans-serif'
-    ].join(','),
-  }
-
+  typography: {
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
+  button: {
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
 });
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
- 
+const persistConfig = { key: "root", storage, version: 1 };
+const persistedReducer = persistReducer(persistConfig, authReducer);
+const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoreActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
   <React.StrictMode>
    <ThemeProvider theme={theme}>
-    <App />
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistStore(store)}>
+        <App />
+      </PersistGate>
+    </Provider>
     </ThemeProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);
+
+

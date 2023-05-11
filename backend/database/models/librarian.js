@@ -17,8 +17,13 @@ const librarianSchema = new mongoose.Schema({
     libraryCardRequest: {
         type : Array,
         default: []
+    },
+    acceptedCardRequests: {
+        type : Array,
+        default: []
     }
 });
+
 
 const Librarian = mongoose.model('Librarian', librarianSchema);
 

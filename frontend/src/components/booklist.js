@@ -1,26 +1,34 @@
-import { Grid } from "@mui/material";
-import { Box } from "@mui/system";
-import Book from "./book";
+import { useState, useEffect } from "react";
+import ListComponent from "./listcomponent";
 
-const displayBook = {
-  title: "DSA",
-  author: "Niraj Singh",
-  publisher: "Penguin & Co.",
-  category: "Computer",
-  quantity: 69,
-};
+function BookList(){
+    const [bookData, setBookData] = useState([]);
 
-function BookList() {
-  return (
-    <Box>
-      <Book abook={displayBook} />
-      <Book abook={displayBook} />
-      <Book abook={displayBook} />
-      <Book abook={displayBook} />
-      <Book abook={displayBook} />
-      <Book abook={displayBook} />
-    </Box>
-  );
+    useEffect(() => {
+        fetch('http://localhost:8080/api/books')
+        .then(data => {
+        return data.json();
+        })
+        .then(book => {
+            setBookData(book);
+        });
+    })
+
+    return(
+        <div style={{textAlign: "center"}}>
+        {bookData.map((book) => (
+            <ListComponent 
+                key={book._id}
+                _id={book._id}
+                title={book.title}
+                author={book.author}
+                publisher={book.publisher}
+                category={book.category}
+                quantity={book.quantity}
+            />
+          ))}
+        </div>
+    );
 }
 
 export default BookList;

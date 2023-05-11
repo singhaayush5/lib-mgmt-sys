@@ -9,6 +9,10 @@ const studentSchema = new mongoose.Schema({
   email: String,
   password: String,
   picPath: String,
+  cardRequested: {
+    type: Boolean,
+    default: false,
+  },
   borrowrequests: {
     type: Array,
     default: [],

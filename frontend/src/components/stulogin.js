@@ -9,8 +9,16 @@ import {
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin } from "../state";
+
+// import Cookies from "universal-cookie";
+// import jwt from "jwt-decode";
 
 function StuLogin() {
+  // const cookies = new Cookies();
+  const dispatch = useDispatch();
+
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -29,7 +37,7 @@ function StuLogin() {
     const { email, password } = user;
     console.log(user);
 
-    const res = await fetch("/login", {
+    const res = await fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -47,6 +55,14 @@ function StuLogin() {
       navigator("/student/login");
     } else {
       console.log(resData);
+      dispatch(
+        setLogin({
+          user: resData.user,
+          token: resData.token,
+        })
+      );
+      
+
       console.log("Success!");
       navigator("/student");
     }
