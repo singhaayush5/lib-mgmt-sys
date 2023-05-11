@@ -30,7 +30,7 @@ function ListComponent(props){
 
 
     return(
-            <Card sx={{ width: 320 , borderRadius:4}} style={{display: "inline-block", margin: "10px", backgroundColor: "#a2d2ff"}}>
+            <Card sx={{ width: 320 }} style={{display: "inline-block", margin: "10px", backgroundColor: "#a2d2ff"}}>
                 <CardActionArea onClick={() => handleClick()}>
                     <CardMedia
                     component="img"

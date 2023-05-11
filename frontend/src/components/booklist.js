@@ -5,7 +5,7 @@ function BookList(){
     const [bookData, setBookData] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/api/books')
+        fetch('http://localhost:3001/api/books')
         .then(data => {
         return data.json();
         })

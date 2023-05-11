@@ -77,7 +77,7 @@ function IssueCard() {
   const postRequest = async (eve) => {
     eve.preventDefault();
 
-    const res = await fetch("http://localhost:8080/api/issuecardreq", {
+    const res = await fetch("http://localhost:3001/api/issuecardreq", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
