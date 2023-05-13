@@ -19,6 +19,35 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const theme = createTheme({
+  components: {
+    MuiButton: { 
+      styleOverrides: { 
+        root: { minWidth: 0 } 
+      } 
+    }
+  },
+  palette: {
+    primary: {
+      main: "#a2d2ff",
+    },
+    secondary: {
+      main: "#FFA0B0",
+    },
+    tertiary:{
+      main: "#dadada"
+    }
+  },
+  typography: {
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
+  button: {
+    fontFamily: ["Lato", "sans-serif"].join(","),
+  },
+});
+
 import Navbar from "./components/navbar";
 
 const persistConfig = { key: "root", storage, version: 1 };
@@ -36,11 +65,15 @@ const store = configureStore({
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+   <ThemeProvider theme={theme}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistStore(store)}>
         <Navbar />
         <App />
       </PersistGate>
     </Provider>
+    </ThemeProvider>
   </React.StrictMode>
 );
+
+

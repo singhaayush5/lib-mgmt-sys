@@ -37,7 +37,7 @@ function StuLogin() {
     const { email, password } = user;
     console.log(user);
 
-    const res = await fetch("/login", {
+    const res = await fetch("http://localhost:8080/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,11 +61,7 @@ function StuLogin() {
           token: resData.token,
         })
       );
-      // const { token } = resData;
-      // const decoded = jwt(token);
-      // cookies.set("token", token, {
-      //   expires: new Date(decoded.exp * 1000),
-      // });
+      
 
       console.log("Success!");
       navigator("/student");
@@ -74,15 +70,16 @@ function StuLogin() {
 
   return (
     <div>
-      <Typography variant="h3" align="Center">
+      <Typography style={{ margin: "6% auto" }} variant="h3" align="Center">
         Login
       </Typography>
-      <Card style={{ maxWidth: 500, margin: "0 auto", padding: "25px 6px" }}>
+      <Card style={{ maxWidth: 400, margin: "3% auto", padding: "20px 6px" }}>
         <CardContent>
           <form>
             <Grid container spacing={2}>
               <Grid xs={12} item>
                 <TextField
+                  size="small"
                   name="email"
                   value={user.email}
                   onChange={handleChange}
@@ -95,6 +92,7 @@ function StuLogin() {
               </Grid>
               <Grid xs={12} item>
                 <TextField
+                  size="small"
                   name="password"
                   value={user.password}
                   onChange={handleChange}
@@ -107,6 +105,7 @@ function StuLogin() {
               </Grid>
               <Grid xs={12} item>
                 <Button
+                  sx={{ borderRadius: 6 }}
                   type="submit"
                   variant="contained"
                   color="primary"

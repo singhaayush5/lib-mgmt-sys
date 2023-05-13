@@ -42,7 +42,7 @@ exports.login = async (req, res) => {
       return res.status(400).json({ msg: "Student does not exist. " });
     }
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: " Invalid Credentials " });
+    if (!isMatch) return res.status(400).json({ msg: ` Invalid Credentials  ${isMatch}` });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
     // res.cookie("token", token, {
@@ -61,3 +61,5 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+

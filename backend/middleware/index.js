@@ -1,4 +1,4 @@
-verifyToken = async (req, res, next) => {
+const verifyToken = async (req, res, next) => {
   try {
     let token = req.header("Authorization"); //frontend se layenge
     if (!token) {
