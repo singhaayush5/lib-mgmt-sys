@@ -20,6 +20,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Navbar from "./components/navbar";
 
 const theme = createTheme({
   components: {
@@ -47,8 +48,6 @@ const theme = createTheme({
     fontFamily: ["Lato", "sans-serif"].join(","),
   },
 });
-
-import Navbar from "./components/navbar";
 
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);

@@ -76,10 +76,10 @@ function Navbar(props) {
                             <Link href="/" sx={{ color: '#fff' }} >{navItems[0]}</Link>
                         </Button>
                         <Button key={navItems[1]} sx={{ color: '#fff' }} >
-                            <Link href="/" sx={{ color: '#fff' }} >{navItems[1]}</Link>
+                            <Link href="/student/login" sx={{ color: '#fff' }} >{navItems[1]}</Link>
                         </Button>
                         <Button key={navItems[2]} sx={{ color: '#fff' }} >
-                            <Link href="/" sx={{ color: '#fff' }}>{navItems[2]}</Link>
+                            <Link href="/student/signup" sx={{ color: '#fff' }}>{navItems[2]}</Link>
                         </Button>
                     </Box>
                 </Toolbar>
@@ -91,7 +91,7 @@ function Navbar(props) {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
@@ -101,6 +101,9 @@ function Navbar(props) {
                     {drawer}
                 </Drawer>
             </Box>
+            <br></br>
+            <br></br>
+            <br></br>
           
         </Box>
     );
