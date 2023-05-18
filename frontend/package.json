@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080/",
+  "proxy": "http://localhost:3001/",
   "dependencies": {
     "@babel/regjsgen": "^0.8.0",
     "@emotion/react": "^11.10.6",
@@ -22,9 +22,11 @@
     "react-datepicker": "^4.10.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
+    "react-rellax": "^1.0.3",
     "react-router-dom": "^6.11.1",
     "react-scripts": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "rellax": "^1.12.1",
     "universal-cookie": "^4.0.4",
     "web-vitals": "^2.1.4",
     "yup": "^1.1.1"

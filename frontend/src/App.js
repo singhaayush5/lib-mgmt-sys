@@ -22,12 +22,14 @@ import IssueCardRequests from "./components/LibCard/issuecardrequests";
 import StuBook from "./components/stubook";
 import LibBook from "./components/libbook";
 import { useSelector } from "react-redux";
+import Home from "./components/Home/home";
 
 function App() {
   const isAuth = useSelector((state) => state.token);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/">
+        <Route index element={<Home/>}></Route>
         <Route path="student">
           <Route index element={<StuHome />}></Route>
           <Route path="login" element={<StuLogin />}></Route>

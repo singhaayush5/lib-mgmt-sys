@@ -104,7 +104,7 @@ function IssueCard() {
 
   const getUData = () => {
     axios
-      .get(`/api/user/${ID}`)
+      .get(`http://localhost:3001/api/user/${ID}`)
       .then((res) => {
         setCardAlreadyRequested(res.data.cardRequested);
       })
@@ -115,7 +115,7 @@ function IssueCard() {
 
   const checkApproved = () => {
     axios
-      .get(`/api/checkcardapproval/${ID}`)
+      .get(`http://localhost:3001/api/checkcardapproval/${ID}`)
       .then((res) => {
         if (res.status === 200) {
           setPending(false);

@@ -37,7 +37,7 @@ function StuLogin() {
     const { email, password } = user;
     console.log(user);
 
-    const res = await fetch("http://localhost:8080/login", {
+    const res = await fetch("http://localhost:3001/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

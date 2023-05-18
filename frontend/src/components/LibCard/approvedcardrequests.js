@@ -12,7 +12,7 @@ function ApprovedCardRequests() {
 
   const getRequests = () => {
     axios
-      .get("/api/librariandata")
+      .get("http://localhost:3001/api/librariandata")
       .then((res) => {
         setRequests(res.data.acceptedCardRequests);
       })
@@ -28,7 +28,7 @@ function ApprovedCardRequests() {
 
     const compReq = () => {
       axios
-        .get(`/api/completecardrequest/${eve.target.name}`)
+        .get(`http://localhost:3001/api/completecardrequest/${eve.target.name}`)
         .then((res) => {
           console.log(res);
         })

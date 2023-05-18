@@ -12,7 +12,7 @@ function PendingCardRequests() {
 
   const getRequests = () => {
     axios
-      .get("/api/librariandata")
+      .get("http://localhost:3001/api/librariandata")
       .then((res) => {
         setRequests(res.data.libraryCardRequest);
       })
@@ -28,7 +28,7 @@ function PendingCardRequests() {
 
     const revReq = () => {
       axios
-        .get(`/api/revokecardrequeststate/${eve.target.name}`)
+        .get(`http://localhost:3001/api/revokecardrequeststate/${eve.target.name}`)
         .then((res) => {
           console.log(res);
         })
@@ -47,7 +47,7 @@ function PendingCardRequests() {
 
     const accReq = () => {
       axios
-        .get(`/api/approvecardrequest/${eve.target.name}`)
+        .get(`http://localhost:3001/api/approvecardrequest/${eve.target.name}`)
         .then((res) => {
           console.log(res);
         })
