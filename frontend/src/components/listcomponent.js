@@ -10,7 +10,7 @@ function ListComponent(props){
         const navigate = useNavigate();
 
         function handleClick() {
-            navigate("/student/book/" + props._id);
+            navigate("/student/books/" + props._id);
         }
 
         const [availability, setAvailability] = useState({
