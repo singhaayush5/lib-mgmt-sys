@@ -20,6 +20,7 @@ import {
 import storage from "redux-persist/lib/storage";
 import { PersistGate } from "redux-persist/integration/react";
 import { createTheme, ThemeProvider } from "@mui/material";
+import Navbar from "./components/navbar";
 
 const theme = createTheme({
   components: {
@@ -48,7 +49,6 @@ const theme = createTheme({
   },
 });
 
-
 const persistConfig = { key: "root", storage, version: 1 };
 const persistedReducer = persistReducer(persistConfig, authReducer);
 const store = configureStore({
@@ -67,6 +67,7 @@ root.render(
    <ThemeProvider theme={theme}>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistStore(store)}>
+        <Navbar />
         <App />
       </PersistGate>
     </Provider>

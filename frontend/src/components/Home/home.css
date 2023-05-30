@@ -16,10 +16,10 @@
 }
 
 
-@media (min-width : 600px){
+@media (min-width : 700px){
     .banner-video{
         width: 100%;
-        height: 100%;
+        height: auto;
     }
     .heading h1{
         font-size: 180px;
@@ -28,7 +28,7 @@
         margin-top: 110%;
     }
 }
-@media (max-width : 600px){
+@media (max-width : 700px){
     .banner-video{
         height: 100%;
         width: auto;

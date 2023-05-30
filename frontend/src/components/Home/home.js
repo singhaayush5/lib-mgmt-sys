@@ -1,6 +1,5 @@
 import { Button, Box, Typography, Grid } from "@mui/material";
 import React from "react";
-import Parallax from "react-rellax";
 import library from "../../videos/library.mp4";
 import "./home.css";
 
