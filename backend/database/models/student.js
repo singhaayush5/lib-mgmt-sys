@@ -13,18 +13,30 @@ const studentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  borrowrequests: {
-    type: Array,
-    default: [],
-  },
-  returnrequests: {
-    type: Array,
-    default: [],
-  },
-  borrowed: {
-    type: Array,
-    default: [],
-  },
+  requests: [
+    {
+      bookid: String,
+      isaccepted: Boolean,
+      isreturned: Boolean
+    }
+  ]
+  //when borrow request is generated => isaccepted: false, isreturned: false
+  //when borrow request is accepted => isaccepted: true, isreturned: false
+  //when book is returned => isaccepted: true, isreturned: true
+
+
+  // borrowrequests: {
+  //   type: Array,
+  //   default: [],
+  // },
+  // returnrequests: {
+  //   type: Array,
+  //   default: [],
+  // },
+  // borrowed: {
+  //   type: Array,
+  //   default: [],
+  // },
 });
 
 studentSchema.pre("save", async function (nxt) {
