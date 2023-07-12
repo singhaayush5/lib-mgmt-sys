@@ -55,33 +55,33 @@ function Navbar(props) {
     return (
         <Box sx={{ display: 'flex'}}>
             <CssBaseline />
-            <AppBar color="transparent" elevation={0} component="nav">
+            <AppBar elevation={0} component="nav">
                 <Toolbar>
                     <IconButton
-                        color="#fff"
+                        color="#000"
                         aria-label="open drawer"
                         edge="start"
                         onClick={handleDrawerToggle}
                         sx={{ mr: 2, display: { sm: 'none' } }}
                     >
-                        <MenuIcon sx={{color : "#fff"}} />
+                        <MenuIcon sx={{color : "#000"}} />
                     </IconButton>
                     <Typography
                         variant="h6"
                         component="div"
-                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color : "#ffffff" }}
+                        sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' }, color : "#000000" }}
                     >
                        LIBRARY
                     </Typography>
                     <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        <Button key={navItems[0]} sx={{ color: '#fff' }} >
-                            <Link href="/" sx={{ color: '#fff', textDecoration:"none" }} >{navItems[0]}</Link>
+                        <Button key={navItems[0]} sx={{ color: '#000' }} >
+                            <Link href="/" sx={{ color: '#000', textDecoration:"none" }} >{navItems[0]}</Link>
                         </Button>
-                        <Button key={navItems[1]} sx={{ color: '#fff' }} >
-                            <Link href="/student/login" sx={{ color: '#fff', textDecoration:"none" }} >{navItems[1]}</Link>
+                        <Button key={navItems[1]} sx={{ color: '#000' }} >
+                            <Link href="/student/login" sx={{ color: '#000', textDecoration:"none" }} >{navItems[1]}</Link>
                         </Button>
-                        <Button key={navItems[2]} sx={{ color: '#fff' }} >
-                            <Link href="/student/signup" sx={{ color: '#fff', textDecoration:"none" }}>{navItems[2]}</Link>
+                        <Button key={navItems[2]} sx={{ color: '#000' }} >
+                            <Link href="/student/signup" sx={{ color: '#000', textDecoration:"none" }}>{navItems[2]}</Link>
                         </Button>
                     </Box>
                 </Toolbar>

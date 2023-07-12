@@ -13,6 +13,19 @@ const studentSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // requests: [
+  //   {
+  //     bookid: String,
+  //     dor: String,
+  //     isaccepted: Boolean,
+  //     isreturned: Boolean
+  //   }
+  // ]
+  //when borrow request is generated => isaccepted: false, isreturned: false
+  //when borrow request is accepted => isaccepted: true, isreturned: false
+  //when book is returned => isaccepted: true, isreturned: true
+
+
   borrowrequests: {
     type: Array,
     default: [],
@@ -25,13 +38,24 @@ const studentSchema = new mongoose.Schema({
     type: Array,
     default: [],
   },
+  returned: {
+    type: Array,
+    default: [],
+  },
 });
 
-studentSchema.pre("save", async function (nxt) {
-  console.log(this.password);
-  this.password = await bcrypt.hash(this.password, 10);
-  console.log(this.password);
-  nxt();
+// studentSchema.pre("save", async function (nxt) {
+//   console.log(this.password);
+//   this.password = await bcrypt.hash(this.password, 10);
+//   console.log(this.password);
+//   nxt();
+// });
+
+studentSchema.pre("save", async function (next) {
+  if (this.isModified("password")) {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+  next();
 });
 
 const Student = mongoose.model("Student", studentSchema);

@@ -4,7 +4,7 @@ const usercontroller = require("../controllers/usercontroller");
 const bookcontroller = require("../controllers/bookcontroller");
 const authcontroller = require("../controllers/auth");
 const librariancontroller = require("../controllers/librariancontroller");
-const { verifyToken } = require("../middleware/index.js");
+const verifyToken  = require("../middleware/index.js");
 
 
 //POST login data.
@@ -26,7 +26,7 @@ router.get("/api/book/:id", bookcontroller.oneBook);
 router.post("/api/newbook", bookcontroller.newBook);
 
 //POST new library card request.
-router.post("/api/issuecardreq", usercontroller.issueCardReq);
+router.post("/api/issuecardreq", verifyToken, usercontroller.issueCardReq);
 
 //GET the approval status of issue card request.
 router.get("/api/checkcardapproval/:id", usercontroller.checkApproved);
@@ -42,6 +42,20 @@ router.get("/api/completecardrequest/:id", librariancontroller.completeCardReque
 
 //GET librarian's data.
 router.get("/api/librariandata", librariancontroller.getLibData);
+
+//POST request for borrowing a book.
+router.post("/api/borrowbook", verifyToken, usercontroller.bookReq);
+
+//GET request to approve a book request.
+router.get("/api/approvebookrequest/:userid/:bookid", librariancontroller.approveBook);
+
+//GET request to confirm a returned book.
+router.get("/api/returnbook/:userid/:bookid/:dt", librariancontroller.returnBook);
+
+//GET request to reject a book request.
+router.get("/api/rejectbook/:userid/:bookid", librariancontroller.rejectBook);
+
+
 
 
 module.exports = router;

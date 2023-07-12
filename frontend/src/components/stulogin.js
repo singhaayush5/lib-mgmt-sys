@@ -54,7 +54,10 @@ function StuLogin() {
       console.log(resData);
       navigator("/student/login");
     } else {
-      console.log(resData);
+      console.log(resData.user);
+      const d = new Date(resData.user.dob);
+      const r = new Date();
+      console.log(((r-d)/86400000).toFixed(0));
       dispatch(
         setLogin({
           user: resData.user,
